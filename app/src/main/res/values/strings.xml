@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">NWeather</string>
+    <string name="actionbar_title">NWeather</string>
+    <string name="title_china">"中国"</string>
+    <string name="progress_loading">"正在加载..."</string>
+    <string name="load_fail">"加载失败"</string>
 </resources>
