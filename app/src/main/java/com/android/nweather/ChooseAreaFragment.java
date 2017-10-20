@@ -37,6 +37,8 @@ import okhttp3.Response;
 
 public class ChooseAreaFragment extends Fragment {
 
+    // TODO add funtion of back
+
     public static final int LEVEL_PROVONCE = 0;
     public static final int LEVEL_CITY = 1;
     public static final int LEVEL_COUNTRY = 2;
