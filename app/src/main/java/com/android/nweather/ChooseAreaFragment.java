@@ -135,7 +135,7 @@ public class ChooseAreaFragment extends Fragment {
             currentLevel = LEVEL_CITY;
         } else {
             int provinceCode = selectedProvince.getProvinceCode();
-            String address = BASE_ADDRESS + provinceCode;
+            String address = BASE_ADDRESS + "/" + provinceCode;
             queryFromServer(address, "city");
         }
     }
@@ -146,7 +146,7 @@ public class ChooseAreaFragment extends Fragment {
     private void queryCountries() {
         titleText.setText(selectedCity.getCityName());
         backButton.setVisibility(View.INVISIBLE);
-        countryList = DataSupport.where("provinceid = ?", String.valueOf(selectedProvince.getId())).find(Country.class);
+        countryList = DataSupport.where("cityid = ?", String.valueOf(selectedCity.getId())).find(Country.class);
         if (countryList.size() > 0) {
             dataList.clear();
             for (Country country : countryList) {
@@ -158,7 +158,7 @@ public class ChooseAreaFragment extends Fragment {
         } else {
             int provinceCode = selectedProvince.getProvinceCode();
             int cityCode = selectedCity.getCityCode();
-            String address = BASE_ADDRESS + cityCode;
+            String address = BASE_ADDRESS + "/" + provinceCode + "/" + cityCode;
             queryFromServer(address, "country");
         }
     }
