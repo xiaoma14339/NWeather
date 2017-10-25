@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="actionbar_title_text_size">20sp</dimen>
+    <dimen name="base_title_text_size">20sp</dimen>
+    <dimen name="base_big_title_text_size">40sp</dimen>
+    <dimen name="actionbar_message_text_size">16sp</dimen>
+    <dimen name="degree_text_size">60sp</dimen>
+    <dimen name="weather_info_text_size">60sp</dimen>
     <dimen name="actionbar_button_width">25dp</dimen>
     <dimen name="actionbar_button_height">25dp</dimen>
     <dimen name="actionbar_button_margin_left">10dp</dimen>
+    <dimen name="current_weather_margin">15dp</dimen>
+    <dimen name="base_layout_margin">15dp</dimen>
 
 </resources>

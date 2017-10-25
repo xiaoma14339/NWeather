@@ -4,4 +4,9 @@
     <string name="title_china">"中国"</string>
     <string name="progress_loading">"正在加载..."</string>
     <string name="load_fail">"加载失败"</string>
+    <string name="forecast_text">"预报"</string>
+    <string name="aqi_text">"空气质量"</string>
+    <string name="aqi_info_text">"AQI指数"</string>
+    <string name="pm25_info_text">"PM2.5指数"</string>
+    <string name="suggestion_text">"生活建议"</string>
 </resources>
