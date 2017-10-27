@@ -1,5 +1,6 @@
 package com.android.nweather.gson;
 
+import com.google.gson.annotations.SerializedName;
 /**
  * Created by qujihai on 2017/10/21.
  */
@@ -8,10 +9,10 @@ public class WeatherForecast {
 
     public String date;
 
-    @SerialzedName("tmp")
+    @SerializedName("tmp")
     public Temperature temperature;
 
-    @SerialzedName("cond")
+    @SerializedName("cond")
     public More more;
 
     public class Temperature {
@@ -22,7 +23,7 @@ public class WeatherForecast {
 
     public class More {
 
-        @SerialzedName("txt_d")
+        @SerializedName("txt_d")
         public String info;
     }
 }

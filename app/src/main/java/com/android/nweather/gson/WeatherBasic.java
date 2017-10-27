@@ -1,22 +1,25 @@
 package com.android.nweather.gson;
 
+
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by qujihai on 2017/10/20.
  */
 
 public class WeatherBasic {
 
-    @SerialzedName("city")
+    @SerializedName("city")
     public String cityName;
 
-    @SerialzedName("id")
+    @SerializedName("id")
     public String weatherId;
 
     public Update update;
 
     public class Update {
 
-        @SerialzedName("loc")
+        @SerializedName("loc")
         public String updateTime;
 
     }

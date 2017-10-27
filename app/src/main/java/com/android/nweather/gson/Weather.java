@@ -1,6 +1,7 @@
 package com.android.nweather.gson;
 
 import java.util.List;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by qujihai on 2017/10/21.
@@ -18,6 +19,6 @@ public class Weather {
 
     public WeatherSuggestion suggestion;
 
-    @SerialzedName("daily_forecast")
+    @SerializedName("daily_forecast")
     public List<WeatherForecast> forecastList;
 }

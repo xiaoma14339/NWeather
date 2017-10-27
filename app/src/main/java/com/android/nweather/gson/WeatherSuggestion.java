@@ -1,34 +1,35 @@
 package com.android.nweather.gson;
 
+import com.google.gson.annotations.SerializedName;
 /**
  * Created by qujihai on 2017/10/20.
  */
 
 public class WeatherSuggestion {
 
-    @SerialzedName("comf")
+    @SerializedName("comf")
     public Confort confort;
 
-    @SerialzedName("cw")
+    @SerializedName("cw")
     public CarWash carWash;
 
     public Sport sport;
 
     public class Confort {
 
-        @SerialzedName("txt")
+        @SerializedName("txt")
         public String info;
     }
 
     public class CarWash {
 
-        @SerialzedName("txt")
+        @SerializedName("txt")
         public String info;
     }
 
     public class Sport {
 
-        @SerialzedName("txt")
+        @SerializedName("txt")
         public String info;
     }
 }

@@ -9,4 +9,8 @@
     <string name="aqi_info_text">"AQI指数"</string>
     <string name="pm25_info_text">"PM2.5指数"</string>
     <string name="suggestion_text">"生活建议"</string>
+    <string name="fail_get_weather_info">"获取天气信息失败"</string>
+    <string name="comfort_text">"舒适度："</string>
+    <string name="car_wash_text">"洗车指数："</string>
+    <string name="sport_text">"运动建议："</string>
 </resources>
