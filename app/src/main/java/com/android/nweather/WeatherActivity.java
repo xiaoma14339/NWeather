@@ -2,11 +2,13 @@
 package com.android.nweather;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -16,6 +18,7 @@ import com.android.nweather.gson.Weather;
 import com.android.nweather.gson.WeatherForecast;
 import com.android.nweather.util.HttpUtil;
 import com.android.nweather.util.Utility;
+import com.bumptech.glide.Glide;
 
 import java.io.IOException;
 
@@ -27,6 +30,7 @@ public class WeatherActivity extends AppCompatActivity {
 
     private static final String BASE_URL_HEAD = "http://guolin.tech/api/weather?cityid=";
     private static final String BASE_URL_KEY = "&key=bc0418b57b2d4918819d3974ac1285d9";
+    private static final String BING_PICTURE_URL = "http://guolin.tech/api/bing_pic";
 
     private ScrollView weatherLayout;
     private TextView titleCity;
@@ -39,6 +43,7 @@ public class WeatherActivity extends AppCompatActivity {
     private TextView comfortText;
     private TextView carWashText;
     private TextView sportText;
+    private ImageView bingImage;
 
 
     @Override
@@ -46,8 +51,17 @@ public class WeatherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
         initViews();
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+        getWindow().setStatusBarColor(Color.TRANSPARENT);
 
-//        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String bingPic = sharedPreferences.getString("bing_pic", null);
+        if (bingPic != null) {
+            Glide.with(this).load(bingPic).into(bingImage);
+        } else {
+            loadBingPic();
+        }
 //        String weatherString = sharedPreferences.getString("weather", null);
 //        if (weatherString != null) {
 //            Weather weather = Utility.handleWeatherResponse(weatherString);
@@ -70,6 +84,7 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText = (TextView) findViewById(R.id.car_wash_text);
         sportText = (TextView) findViewById(R.id.sport_text);
         forecastLayout = (LinearLayout) findViewById(R.id.forecast_layout);
+        bingImage = (ImageView) findViewById(R.id.bing_pic_img);
     }
 
     /**
@@ -152,5 +167,31 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * Load bing picture
+     */
+    private void loadBingPic() {
+        HttpUtil.sendOkHttpRequest(BING_PICTURE_URL, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final String bingPic = response.body().string();
+                SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(WeatherActivity.this).edit();
+                editor.putString("bing_pic", bingPic);
+                editor.apply();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Glide.with(WeatherActivity.this).load(bingPic).into(bingImage);
+                    }
+                });
+            }
+        });
     }
 }
