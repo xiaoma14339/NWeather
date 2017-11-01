@@ -11,5 +11,7 @@
     <dimen name="actionbar_button_margin_left">10dp</dimen>
     <dimen name="current_weather_margin">15dp</dimen>
     <dimen name="base_layout_margin">15dp</dimen>
+    <dimen name="back_icon_height">30dp</dimen>
+    <dimen name="back_icon_width">30dp</dimen>
 
 </resources>
