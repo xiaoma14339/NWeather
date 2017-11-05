@@ -1,6 +1,7 @@
 
 package com.android.nweather;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.preference.PreferenceManager;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import com.android.nweather.gson.Weather;
 import com.android.nweather.gson.WeatherForecast;
+import com.android.nweather.service.AutoUpdateService;
 import com.android.nweather.util.HttpUtil;
 import com.android.nweather.util.Utility;
 import com.bumptech.glide.Glide;
@@ -32,9 +34,9 @@ import okhttp3.Response;
 
 public class WeatherActivity extends AppCompatActivity {
 
-    private static final String BASE_URL_HEAD = "http://guolin.tech/api/weather?cityid=";
-    private static final String BASE_URL_KEY = "&key=bc0418b57b2d4918819d3974ac1285d9";
-    private static final String BING_PICTURE_URL = "http://guolin.tech/api/bing_pic";
+    public static final String BASE_URL_HEAD = "http://guolin.tech/api/weather?cityid=";
+    public static final String BASE_URL_KEY = "&key=bc0418b57b2d4918819d3974ac1285d9";
+    public static final String BING_PICTURE_URL = "http://guolin.tech/api/bing_pic";
 
     private ScrollView weatherLayout;
     private TextView titleCity;
@@ -144,6 +146,8 @@ public class WeatherActivity extends AppCompatActivity {
                             editor.putString("weather", responseText);
                             editor.apply();
                             showWeatherInfo(weather);
+                            Intent intent = new Intent(this, AutoUpdateService.class);
+                            startService(intent);
                         } else {
                             Toast.makeText(WeatherActivity.this,
                                     getString(R.string.fail_get_weather_info), Toast.LENGTH_SHORT).show();
