@@ -24,7 +24,7 @@ import okhttp3.Response;
 
 public class AutoUpdateService extends Service {
 
-    private static final int A_HOUR = 8 * 60 * 60 * 1000; // 8 hours
+    private static final int A_HOUR = 5 * 1000; // 8 hours
 
     public AutoUpdateService() {
     }

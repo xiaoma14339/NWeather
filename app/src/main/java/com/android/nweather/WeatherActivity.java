@@ -146,7 +146,7 @@ public class WeatherActivity extends AppCompatActivity {
                             editor.putString("weather", responseText);
                             editor.apply();
                             showWeatherInfo(weather);
-                            Intent intent = new Intent(this, AutoUpdateService.class);
+                            Intent intent = new Intent(WeatherActivity.this, AutoUpdateService.class);
                             startService(intent);
                         } else {
                             Toast.makeText(WeatherActivity.this,
